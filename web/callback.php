@@ -62,12 +62,12 @@ if ($text == 'はい') {
       "columns" => [
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/02.png",
-            "title" => "●●レストラン",
+            "title" => "温度確認",
             "text" => "こちらにしますか？",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "温度確認",
                   "data" => "action=rsv&itemid=111"
               ],
               [
@@ -84,12 +84,12 @@ if ($text == 'はい') {
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/03.png",
-            "title" => "▲▲レストラン",
+            "title" => "生体確認",
             "text" => "それともこちら？（２つ目）",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "温度確認",
                   "data" => "action=rsv&itemid=222"
               ],
               [
@@ -106,12 +106,12 @@ if ($text == 'はい') {
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/04.png",
-            "title" => "■■レストラン",
+            "title" => "電力量確認",
             "text" => "はたまたこちら？（３つ目）",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "予約する",
+                  "label" => "温度確認",
                   "data" => "action=rsv&itemid=333"
               ],
               [
