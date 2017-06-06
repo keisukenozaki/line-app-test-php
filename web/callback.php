@@ -146,7 +146,7 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $displayName . "さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
         "text" => "こんにちは 何かご用ですか？",
