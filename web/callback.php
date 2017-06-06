@@ -30,7 +30,7 @@ if ($text == 'はい') {
       "actions" => [
           [
             "type" => "postback",
-            "label" => "予約する",
+            "label" => "温度確認",
             "data" => "action=buy&itemid=123"
           ],
           [
@@ -40,7 +40,7 @@ if ($text == 'はい') {
           ],
           [
             "type" => "uri",
-            "label" => "詳しく見る",
+            "label" => "電力量確認",
             "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
           ],
           [
