@@ -12,24 +12,24 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
-$userId = $jsonObj->{"events"}[0]->{"source"}->{"userId"};
+//$userId = $jsonObj->{"events"}[0]->{"source"}->{"userId"};
 
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
 }
 
-$response = $this->bot->getProfile($this->userId);
-
-if ($response->isSucceeded()) {
-
-  $profile = $response->getJSONDecodedBody();
-  $displayName = $profile['displayName'];
-  $userId = $profile['userId'];
-  $pictureUrl = $profile['pictureUrl'];
-  $statusMessage = $profile['statusMessage'];
-  $this->profile_array = array("displayName"=>$displayName,"userId"=>$userId,"pictureUrl"=>$pictureUrl,"statusMessage"=>$statusMessage);
-}
+//$response = $this->bot->getProfile($this->userId);
+//
+//if ($response->isSucceeded()) {
+//
+//  $profile = $response->getJSONDecodedBody();
+//  $displayName = $profile['displayName'];
+//  $userId = $profile['userId'];
+//  $pictureUrl = $profile['pictureUrl'];
+//  $statusMessage = $profile['statusMessage'];
+//  $this->profile_array = array("displayName"=>$displayName,"userId"=>$userId,"pictureUrl"=>$pictureUrl,"statusMessage"=>$statusMessage);
+//}
 
 //返信データ作成
 if ($text == 'はい') {
