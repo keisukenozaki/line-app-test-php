@@ -45,15 +45,15 @@ if ($text == 'はい') {
           ],
           [
             "type" => "message",
-            "label" => "違うやつ",
-            "text" => "違うやつお願い"
+            "label" => "その他",
+            "text" => "その他を選択"
           ]
       ]
     ]
   ];
 } else if ($text == 'いいえ') {
   exit;
-} else if ($text == '違うやつお願い') {
+} else if ($text == 'その他を選択') {
   $response_format_text = [
     "type" => "template",
     "altText" => "候補を３つご案内しています。",
