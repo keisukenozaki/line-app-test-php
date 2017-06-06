@@ -12,6 +12,8 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
+$userId = $jsonObj->{"events"}[0]->{"source"}->{"userId"};
+
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
@@ -24,7 +26,7 @@ if ($text == 'はい') {
     "altText" => "こちらの〇〇はいかがですか？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/01.png",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/01.jpg",
       "title" => "ホーム確認",
       "text" => "どのサービスにしますか",
       "actions" => [
@@ -61,7 +63,7 @@ if ($text == 'はい') {
       "type" => "carousel",
       "columns" => [
           [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/02.png",
+            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/02.jpg",
             "title" => "温度確認",
             "text" => "こちらにしますか？",
             "actions" => [
@@ -83,7 +85,7 @@ if ($text == 'はい') {
             ]
           ],
           [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/03.png",
+            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/03.jpg",
             "title" => "生体確認",
             "text" => "それともこちら？（２つ目）",
             "actions" => [
@@ -105,7 +107,7 @@ if ($text == 'はい') {
             ]
           ],
           [
-            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/04.png",
+            "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/04.jpg",
             "title" => "電力量確認",
             "text" => "はたまたこちら？（３つ目）",
             "actions" => [
@@ -132,7 +134,7 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $userId . "さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
         "text" => "こんにちは 何かご用ですか？",
