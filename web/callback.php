@@ -19,6 +19,18 @@ if($type != "text"){
 	exit;
 }
 
+$response = $this->bot->getProfile($this->userId);
+
+if ($response->isSucceeded()) {
+
+  $profile = $response->getJSONDecodedBody();
+  $displayName = $profile['displayName'];
+  $userId = $profile['userId'];
+  $pictureUrl = $profile['pictureUrl'];
+  $statusMessage = $profile['statusMessage'];
+  $this->profile_array = array("displayName"=>$displayName,"userId"=>$userId,"pictureUrl"=>$pictureUrl,"statusMessage"=>$statusMessage);
+}
+
 //返信データ作成
 if ($text == 'はい') {
   $response_format_text = [
@@ -37,7 +49,7 @@ if ($text == 'はい') {
           ],
           [
             "type" => "postback",
-            "label" => "電話する",
+            "label" => "生体センサー",
             "data" => "action=pcall&itemid=123"
           ],
           [
@@ -134,7 +146,7 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $userId . "さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $displayName . "さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
         "text" => "こんにちは 何かご用ですか？",
