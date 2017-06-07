@@ -21,7 +21,7 @@ if($type != "text"){
 }
 
 $content = $jsonObj->result{0}->content;
-//$from = $content->from;
+$from = $content->from;
 
 $displayName = "A";
 
