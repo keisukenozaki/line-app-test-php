@@ -29,9 +29,9 @@ if($type != "text"){
 // $displayName = api_get_user_profile_request($from);
 
 
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
-$response = $bot->getProfile($userId);
-
+// $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
+// $response = $bot->getProfile($userId);
+// 
 // if ($response->isSucceeded()) {
 //   $profile = $response->getJSONDecodedBody();
 //   $displayName = $profile['displayName'];
