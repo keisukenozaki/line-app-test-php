@@ -3,7 +3,6 @@ $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
 $channel_id = "1517932295";
 $channel_secret = "5ff988446003c365d05128b99d797582";
-$mid = "③MID";
 
 require('../vendor/autoload.php');
 
@@ -30,7 +29,7 @@ $from = $content->from;
 $displayName = "A";
 
 // ユーザ情報取得
-$displayName = api_get_user_profile_request($from);
+//$displayName = api_get_user_profile_request($from);
 
 
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
@@ -161,10 +160,10 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $displayName . "さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちはさん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは" . $displayName . "さん 何かご用ですか？" . $userId,
+        "text" => "こんにちはさん 何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
