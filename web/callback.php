@@ -1,7 +1,7 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
-require('../vendor/autoload.php');
+//require('../vendor/autoload.php');
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -22,15 +22,15 @@ if($type != "text"){
 
 $displayName = "A";
 
-$response = $this->bot->getProfile($userId);
-
-if ($response->isSucceeded()) {
-  $profile = $response->getJSONDecodedBody();
-  $displayName = $profile['displayName'];
-  $userId = $profile['userId'];
-  $pictureUrl = $profile['pictureUrl'];
-  $statusMessage = $profile['statusMessage'];
-}
+// $response = $this->bot->getProfile($userId);
+// 
+// if ($response->isSucceeded()) {
+//   $profile = $response->getJSONDecodedBody();
+//   $displayName = $profile['displayName'];
+//   $userId = $profile['userId'];
+//   $pictureUrl = $profile['pictureUrl'];
+//   $statusMessage = $profile['statusMessage'];
+// }
 
 
 
