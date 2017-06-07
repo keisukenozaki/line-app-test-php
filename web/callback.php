@@ -1,6 +1,7 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
+require('../vendor/autoload.php');
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -18,6 +19,20 @@ $userId = $jsonObj->{"events"}[0]->{"source"}->{"userId"};
 if($type != "text"){
 	exit;
 }
+
+$displayName = "A"
+
+$response = $this->bot->getProfile($userId);
+
+if ($response->isSucceeded()) {
+  $profile = $response->getJSONDecodedBody();
+  $displayName = $profile['displayName'];
+  $userId = $profile['userId'];
+  $pictureUrl = $profile['pictureUrl'];
+  $statusMessage = $profile['statusMessage'];
+}
+
+
 
 //返信データ作成
 if ($text == 'はい') {
@@ -134,7 +149,7 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $userId . "さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $displayName . "さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
         "text" => "こんにちは 何かご用ですか？",
@@ -170,3 +185,6 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     ));
 $result = curl_exec($ch);
 curl_close($ch);
+
+
+
