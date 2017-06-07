@@ -1,6 +1,10 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 
+$channel_id = "1517932295";
+$channel_secret = "5ff988446003c365d05128b99d797582";
+$mid = "③MID";
+
 require('../vendor/autoload.php');
 
 //ユーザーからのメッセージ取得
@@ -199,8 +203,7 @@ function api_get_user_profile_request($mid) {
     $url = "https://trialbot-api.line.me/v1/profiles?mids={$mid}";
     $headers = array(
         "X-Line-ChannelID: {$GLOBALS['channel_id']}",
-        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}",
-        "X-Line-Trusted-User-With-ACL: {$GLOBALS['mid']}"
+        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}"
     ); 
  
     $curl = curl_init($url);
