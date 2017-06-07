@@ -22,8 +22,8 @@ if($type != "text"){
 
 $displayName = "A";
 
-// $response = $this->bot->getProfile($userId);
-// 
+$response = $this->bot->getProfile($userId);
+
 // if ($response->isSucceeded()) {
 //   $profile = $response->getJSONDecodedBody();
 //   $displayName = $profile['displayName'];
