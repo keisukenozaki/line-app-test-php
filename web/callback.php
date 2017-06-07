@@ -20,8 +20,16 @@ if($type != "text"){
 	exit;
 }
 
+$content = $jsonObj->result{0}->content;
+$from = $content->from;
+
 $displayName = "A";
 
+// ユーザ情報取得
+$displayName = api_get_user_profile_request($from);
+
+
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
 $response = $bot->getProfile($userId);
 
 // if ($response->isSucceeded()) {
@@ -187,4 +195,20 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 
+function api_get_user_profile_request($mid) {
+    $url = "https://trialbot-api.line.me/v1/profiles?mids={$mid}";
+    $headers = array(
+        "X-Line-ChannelID: {$GLOBALS['channel_id']}",
+        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}",
+        "X-Line-Trusted-User-With-ACL: {$GLOBALS['mid']}"
+    ); 
+ 
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($curl);
+//    error_log($output);
+    return $output;
+
+}
 
