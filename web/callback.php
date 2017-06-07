@@ -20,11 +20,11 @@ if($type != "text"){
 	exit;
 }
 
-//$content = $jsonObj->result{0}->content;
+$content = $jsonObj->result{0}->content;
 //$from = $content->from;
-//
-//$displayName = "A";
-//
+
+$displayName = "A";
+
 // ユーザ情報取得
 // $displayName = api_get_user_profile_request($from);
 
