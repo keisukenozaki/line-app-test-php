@@ -22,7 +22,7 @@ if($type != "text"){
 
 $displayName = "A";
 
-$response = $this->bot->getProfile($userId);
+$response = $bot->getProfile($userId);
 
 // if ($response->isSucceeded()) {
 //   $profile = $response->getJSONDecodedBody();
