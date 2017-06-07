@@ -20,7 +20,7 @@ if($type != "text"){
 	exit;
 }
 
-$displayName = "A"
+$displayName = "A";
 
 $response = $this->bot->getProfile($userId);
 
