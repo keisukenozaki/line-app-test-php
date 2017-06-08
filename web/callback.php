@@ -218,8 +218,10 @@ function api_get_user_profile_request($userId) {
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-	    'Content-Type: application/json; charser=UTF-8',
-	    'Authorization: Bearer ' . $accessToken
+	    "Content-Type: application/json; charser=UTF-8",
+	    "X-Line-ChannelID: {" . $GLOBALS['channel_id'] . "}",
+		"X-Line-ChannelSecret: {" . $GLOBALS['channel_secret'] . "}";
+	    "Authorization: Bearer " . $GLOBALS['$accessToken']
 	    ));
 	$result = curl_exec($ch);
 	curl_close($ch);
