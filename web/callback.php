@@ -29,8 +29,11 @@ $from = $content->from;
 $displayName = "A";
 
 // ユーザ情報取得
-$displayName = api_get_user_profile_request($userId);
+//$userProfile = api_get_user_profile_request($userId);
 
+$userProfileObj = json_decode(api_get_user_profile_request($userId));
+
+$displayName = $userProfileObj->{"displayName"}
 
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
 // $response = $bot->getProfile($userId);
