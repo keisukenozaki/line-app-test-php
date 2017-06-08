@@ -165,10 +165,10 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $userProfile ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは" . $json_string ."さん 何かご用ですか？",
+        "text" => "こんにちは" . $userProfile ."さん 何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
