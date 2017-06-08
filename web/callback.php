@@ -29,7 +29,7 @@ $from = $content->from;
 $displayName = "A";
 
 // ユーザ情報取得
-$displayName = api_get_user_profile_request($from);
+$displayName = api_get_user_profile_request($userId);
 
 
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
