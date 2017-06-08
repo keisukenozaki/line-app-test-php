@@ -29,11 +29,13 @@ $from = $content->from;
 $displayName = "A";
 
 // ユーザ情報取得
-//$userProfile = api_get_user_profile_request($userId);
+$userProfile = api_get_user_profile_request($userId);
 
-$userProfileObj = json_decode(api_get_user_profile_request($userId));
+$userProfileObj = json_decode($userProfile);
 
-$displayName = $userProfileObj->{"displayName"}
+$displayName = $userProfileObj->{"displayName"};
+
+// $displayName = $json_string;
 
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
 // $response = $bot->getProfile($userId);
@@ -166,7 +168,7 @@ if ($text == 'はい') {
     "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは" . $displayName ."さん 何かご用ですか？",
+        "text" => "こんにちは" . $displayName ."さん 何かご用ですか？json_string: " . $json_string,
         "actions" => [
             [
               "type" => "message",
