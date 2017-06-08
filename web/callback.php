@@ -33,7 +33,7 @@ $userProfile = api_get_user_profile_request($userId);
 
 // $userProfileObj = json_decode($userProfile);
 // 
-// $displayName = $userProfileObj->{"displayName"};
+$displayName = $userProfile["displayName"];
 
 // $displayName = $json_string;
 
@@ -165,10 +165,10 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは" . $userProfile ."さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは" . $userProfile ."さん 何かご用ですか？",
+        "text" => "こんにちは" . $displayName ."さん 何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
