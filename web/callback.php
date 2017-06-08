@@ -29,7 +29,7 @@ $from = $content->from;
 $displayName = "A";
 
 // ユーザ情報取得
-//$displayName = api_get_user_profile_request($from);
+$displayName = api_get_user_profile_request($from);
 
 
 // $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
@@ -160,7 +160,7 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちは○○さん 何かご用ですか？（はい／いいえ）",
+    "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
         "text" => "こんにちは○○さん 何かご用ですか？",
@@ -185,6 +185,13 @@ $post_data = [
 	"messages" => [$response_format_text]
 	];
 
+// HTTP request の仕様
+// POST https://api.line.me/v2/bot/message/reply
+// Request headers
+// Request header	Description
+// Content-Type	application/json
+// Authorization	Bearer {Channel Access Token}
+
 $ch = curl_init("https://api.line.me/v2/bot/message/reply");
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
@@ -198,19 +205,39 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 
-function api_get_user_profile_request($mid) {
-    $url = "https://trialbot-api.line.me/v1/profiles?mids={$mid}";
-    $headers = array(
-        "X-Line-ChannelID: {$GLOBALS['channel_id']}",
-        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}"
-    ); 
- 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($curl);
-//    error_log($output);
-    return $output;
+function api_get_user_profile_request($userId) {
+
+	// HTTP request
+	// GET https://api.line.me/v2/bot/profile/{userId}
+	// Request headers
+	// Request header	Description
+	// Authorization	Bearer {Channel Access Token}
+
+	$ch = curl_init("https://api.line.me/v2/bot/profile/" . $userId);
+//	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+	    'Content-Type: application/json; charser=UTF-8',
+	    'Authorization: Bearer ' . $accessToken
+	    ));
+	$result = curl_exec($ch);
+	curl_close($ch);
+    return $result;
+
+
+//    $url = "https://trialbot-api.line.me/v1/profiles?mids={$mid}";
+//    $headers = array(
+//        "X-Line-ChannelID: {$GLOBALS['channel_id']}",
+//        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}"
+//    ); 
+// 
+//    $curl = curl_init($url);
+//    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+//    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//    $output = curl_exec($curl);
+////    error_log($output);
+//    return $output;
 
 }
 
