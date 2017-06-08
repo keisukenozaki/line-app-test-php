@@ -31,9 +31,9 @@ $displayName = "A";
 // ユーザ情報取得
 $userProfile = api_get_user_profile_request($userId);
 
-$userProfileObj = json_decode($userProfile);
-
-$displayName = $userProfileObj->{"displayName"};
+// $userProfileObj = json_decode($userProfile);
+// 
+// $displayName = $userProfileObj->{"displayName"};
 
 // $displayName = $json_string;
 
