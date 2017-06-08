@@ -163,7 +163,7 @@ if ($text == 'はい') {
     "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは○○さん 何かご用ですか？",
+        "text" => "こんにちは" . $displayName ."さん 何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
