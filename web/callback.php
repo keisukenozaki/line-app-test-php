@@ -32,24 +32,7 @@ $displayName = "A";
 $userProfile = api_get_user_profile_request($userId);
 $profileObj = json_decode($userProfile, true);
 
-// $userProfileObj = json_decode($userProfile);
-// 
 $displayName = $profileObj["displayName"];
-
-// $displayName = $json_string;
-
-// $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '<channel secret>']);
-// $response = $bot->getProfile($userId);
-// 
-// if ($response->isSucceeded()) {
-//   $profile = $response->getJSONDecodedBody();
-//   $displayName = $profile['displayName'];
-//   $userId = $profile['userId'];
-//   $pictureUrl = $profile['pictureUrl'];
-//   $statusMessage = $profile['statusMessage'];
-// }
-
-
 
 //返信データ作成
 if ($text == 'はい') {
@@ -232,20 +215,5 @@ function api_get_user_profile_request($userId) {
 	$result = curl_exec($ch);
 	curl_close($ch);
     return $result;
-
-
-//    $url = "https://trialbot-api.line.me/v1/profiles?mids={$mid}";
-//    $headers = array(
-//        "X-Line-ChannelID: {$GLOBALS['channel_id']}",
-//        "X-Line-ChannelSecret: {$GLOBALS['channel_secret']}"
-//    ); 
-// 
-//    $curl = curl_init($url);
-//    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-//    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//    $output = curl_exec($curl);
-////    error_log($output);
-//    return $output;
-
 }
 
