@@ -168,7 +168,7 @@ if ($text == 'はい') {
     "altText" => "こんにちは" . $displayName ."さん 何かご用ですか？（はい／いいえ）",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちは" . $displayName ."さん 何かご用ですか？",
+        "text" => "こんにちは" . $json_string ."さん 何かご用ですか？",
         "actions" => [
             [
               "type" => "message",
