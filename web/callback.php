@@ -264,11 +264,11 @@ function menuKnow01() {
 function menuKnow02() {
 	$textData = [
 			"type" => "template",
-			"altText" => "現在の湿度は63%です",
+			"altText" => "現在の湿度は63パーセントです",
 			"template" => [
 					"type" => "message",
 					"title" => "湿度確認",
-					"text" => "現在の湿度は63%です"
+					"text" => "現在の湿度は63パーセントです"
 			]
 	];
 	return $textData;
