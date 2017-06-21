@@ -78,6 +78,8 @@ if ($text == 'はい') {
   ];
 } else if ($text == $MENU_KNOW_1) {
 	$response_format_text = menuKnow01();
+} else if ($text == $MENU_KNOW_2) {
+	$response_format_text = menuKnow02();
 } else if ($text == 'いいえ') {
 	exit;
 } else if ($text == 'その他を選択') {
@@ -254,6 +256,19 @@ function menuKnow01() {
 									"text" => "○○くんの部屋の温度を確認して"
 							]
 					]
+			]
+	];
+	return $textData;
+}
+// メニューの２番目が押された場合
+function menuKnow02() {
+	$textData = [
+			"type" => "template",
+			"altText" => "現在の湿度は63%です",
+			"template" => [
+					"type" => "message",
+					"title" => "湿度確認",
+					"text" => "現在の湿度は63%です"
 			]
 	];
 	return $textData;
