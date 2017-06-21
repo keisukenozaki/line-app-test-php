@@ -80,6 +80,14 @@ if ($text == 'はい') {
 	$response_format_text = menuKnow01();
 } else if ($text == $MENU_KNOW_2) {
 	$response_format_text = menuKnow02();
+} else if ($text == $MENU_KNOW_3) {
+	$response_format_text = menuKnow03();
+} else if ($text == $MENU_KNOW_4) {
+	$response_format_text = menuKnow04();
+} else if ($text == $MENU_KNOW_5) {
+	$response_format_text = menuKnow05();
+} else if ($text == $MENU_KNOW_6) {
+	$response_format_text = menuKnow06();
 } else if ($text == 'いいえ') {
 	exit;
 } else if ($text == 'その他を選択') {
@@ -265,6 +273,38 @@ function menuKnow02() {
 	$textData = [
 			"type" => "text",
 			"text" => "現在の湿度は63パーセントです"
+	];
+	return $textData;
+}
+// メニューの３番目が押された場合
+function menuKnow03() {
+	$textData = [
+			"type" => "text",
+			"text" => "現在の音は静かです"
+	];
+	return $textData;
+}
+// メニューの４番目が押された場合
+function menuKnow04() {
+	$textData = [
+			"type" => "text",
+			"text" => "現在の電力は3kWです"
+	];
+	return $textData;
+}
+// メニューの５番目が押された場合
+function menuKnow05() {
+	$textData = [
+			"type" => "text",
+			"text" => "本日の電気料金は230円です"
+	];
+	return $textData;
+}
+// メニューの６番目が押された場合
+function menuKnow06() {
+	$textData = [
+			"type" => "text",
+			"text" => "何かお困りですか"
 	];
 	return $textData;
 }
