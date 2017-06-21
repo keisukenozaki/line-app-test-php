@@ -304,7 +304,7 @@ function menuKnow05() {
 function menuKnow06() {
 	$textData = [
 			"type" => "text",
-			"text" => "何かお困りですか"
+			"text" => "何かお困りですか?"
 	];
 	return $textData;
 }
