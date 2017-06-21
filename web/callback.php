@@ -4,6 +4,14 @@ $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 $channel_id = "1517932295";
 $channel_secret = "5ff988446003c365d05128b99d797582";
 
+$MENU_KNOW_1 = "温度を知りたい";
+$MENU_KNOW_2 = "湿度を知りたい";
+$MENU_KNOW_3 = "音声情報を知りたい";
+$MENU_KNOW_4 = "電力を知りたい";
+$MENU_KNOW_5 = "電気料金を知りたい";
+$MENU_KNOW_6 = "...";
+
+
 require('../vendor/autoload.php');
 
 //ユーザーからのメッセージ取得
@@ -68,8 +76,10 @@ if ($text == 'はい') {
       ]
     ]
   ];
+} else if ($text == $MENU_KNOW_1) {
+	$response_format_text = menuKnow01() ;
 } else if ($text == 'いいえ') {
-  exit;
+	exit;
 } else if ($text == 'その他を選択') {
   $response_format_text = [
     "type" => "template",
@@ -217,3 +227,33 @@ function api_get_user_profile_request($userId) {
 //	    "X-Line-ChannelID: " . $GLOBALS['channel_id'],
 //		"X-Line-ChannelSecret: " .$GLOBALS['channel_secret'],
 
+function menuKnow01() {
+	$result = [
+			"type" => "template",
+			"altText" => "どちらの部屋の温度が知りたいですか",
+			"template" => [
+					"type" => "buttons",
+					"thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/01.jpg",
+					"title" => "温度確認",
+					"text" => "どちらの部屋の温度が知りたいですか",
+					"actions" => [
+							[
+									"type" => "postback",
+									"label" => "リビングルーム",
+									"text" => "リビングルームの温度を確認して"
+							],
+							[
+									"type" => "postback",
+									"label" => "○○ちゃんの部屋",
+									"text" => "○○ちゃんの部屋の温度を確認して"
+							],
+							[
+									"type" => "uri",
+									"label" => "○○くんの部屋",
+									"text" => "○○くんの部屋の温度を確認して"
+							]
+					]
+			]
+	];
+	return $result;
+}
