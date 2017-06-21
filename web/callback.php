@@ -77,7 +77,7 @@ if ($text == 'はい') {
     ]
   ];
 } else if ($text == $MENU_KNOW_1) {
-	$response_format_text = menuKnow01() ;
+	$response_format_text = menuKnow01();
 } else if ($text == 'いいえ') {
 	exit;
 } else if ($text == 'その他を選択') {
@@ -227,10 +227,11 @@ function api_get_user_profile_request($userId) {
 //	    "X-Line-ChannelID: " . $GLOBALS['channel_id'],
 //		"X-Line-ChannelSecret: " .$GLOBALS['channel_secret'],
 
+// メニューの１番目が押された場合
 function menuKnow01() {
-	$result = [
+	$textData = [
 			"type" => "template",
-			"altText" => "どちらの部屋の温度が知りたいですか",
+			"altText" => "どちらの部屋の温度を知りたいですか",
 			"template" => [
 					"type" => "buttons",
 					"thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/01.jpg",
@@ -238,22 +239,22 @@ function menuKnow01() {
 					"text" => "どちらの部屋の温度が知りたいですか",
 					"actions" => [
 							[
-									"type" => "postback",
+									"type" => "message",
 									"label" => "リビングルーム",
 									"text" => "リビングルームの温度を確認して"
 							],
 							[
-									"type" => "postback",
+									"type" => "message",
 									"label" => "○○ちゃんの部屋",
 									"text" => "○○ちゃんの部屋の温度を確認して"
 							],
 							[
-									"type" => "uri",
+									"type" => "message",
 									"label" => "○○くんの部屋",
 									"text" => "○○くんの部屋の温度を確認して"
 							]
 					]
 			]
 	];
-	return $result;
+	return $textData;
 }
