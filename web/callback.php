@@ -263,13 +263,8 @@ function menuKnow01() {
 // メニューの２番目が押された場合
 function menuKnow02() {
 	$textData = [
-			"type" => "template",
-			"altText" => "現在の湿度は63%です",
-			"template" => [
-					"type" => "message",
-					"title" => "湿度確認",
-					"text" => "現在の湿度は63%です"
-			]
+			"type" => "text",
+			"text" => "現在の湿度は63パーセントです"
 	];
 	return $textData;
 }
